@@ -1,24 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
+import HomePage from './components/index';
+//css reset from Material UI
+import CssBaseline from '@material-ui/core/CssBaseline';
+
+//override Material UI global styles
+import {createMuiTheme, ThemeProvider} from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: [
+      'Open Sans',
+      'sans-serif',
+    ].join(','),
+  },
+  palette: {
+    primary: {
+        light: "#f0eefa",
+        main: "#252A2D",
+    },
+    secondary: {
+        main: "#219afd",
+        dark:'#186aad'
+    }
+  }
+});
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <ThemeProvider theme={theme}>
+    <CssBaseline /> 
+      <HomePage />
+  </ThemeProvider>
+     
   );
 }
 
